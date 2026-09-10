@@ -13,8 +13,8 @@ export async function getAgendamento(id: string): Promise<Agendamento | null> {
 
 export async function confirmarAgendamento(id: string): Promise<Agendamento | null> {
   const { data, error } = await supabaseAdmin
-    .update({ status: 'confirmado', confirmado_em: new Date().toISOString() })
     .from('agendamentos')
+    .update({ status: 'confirmado', confirmado_em: new Date().toISOString() })
     .eq('id', id)
     .neq('status', 'confirmado')
     .select('id,nome_cliente,data_hora_anterior,data_hora_nova,status,link_expira_em')
