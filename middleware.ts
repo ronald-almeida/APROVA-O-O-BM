@@ -12,7 +12,7 @@ export function middleware(request: NextRequest) {
   if (!auth?.startsWith('Basic ')) return unauthorized();
 
   try {
-    const decoded = Buffer.from(auth.slice(6), 'base64').toString('utf8');
+    const decoded = atob(auth.slice(6));
     const separator = decoded.indexOf(':');
     const user = separator >= 0 ? decoded.slice(0, separator) : '';
     const pass = separator >= 0 ? decoded.slice(separator + 1) : '';
