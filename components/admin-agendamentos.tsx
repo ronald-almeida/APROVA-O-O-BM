@@ -118,3 +118,4 @@ export default function AdminAgendamentos() {
       </section>
     </div>
   </main>;
+}
