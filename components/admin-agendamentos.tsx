@@ -13,7 +13,9 @@ function formatDateTime(value: string) {
 }
 
 function toIso(value: string) {
-  return new Date(value).toISOString();
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) throw new Error('Selecione datas e horários válidos.');
+  return date.toISOString();
 }
 
 export default function AdminAgendamentos() {
@@ -33,7 +35,7 @@ export default function AdminAgendamentos() {
     try {
       const res = await fetch('/api/admin/agendamentos', { cache: 'no-store' });
       const body = await res.json();
-      if (!res.ok) throw new Error(body.error || 'Erro ao carregar.');
+      if (!res.ok) throw new Error(body.detail ? `${body.error} (${body.detail})` : body.error || 'Erro ao carregar.');
       setAgendamentos(body.data);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erro inesperado.');
@@ -57,7 +59,7 @@ export default function AdminAgendamentos() {
         }),
       });
       const body = await res.json();
-      if (!res.ok) throw new Error(body.error || 'Não foi possível criar.');
+      if (!res.ok) throw new Error(body.detail ? `${body.error} (${body.detail})` : body.error || 'Não foi possível criar.');
       setAgendamentos((current) => [...current, body.data].sort((a, b) => new Date(a.data_hora_nova).getTime() - new Date(b.data_hora_nova).getTime()));
       setForm({ nome: '', anterior: '', novo: '', expira: '' });
     } catch (err) {
@@ -116,4 +118,3 @@ export default function AdminAgendamentos() {
       </section>
     </div>
   </main>;
-}
