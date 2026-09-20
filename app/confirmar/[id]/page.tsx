@@ -6,6 +6,7 @@ const REDIRECTS: Record<string, string> = {
   '20f74bf5-9cfc-4657-8150-00f1999562b8': 'https://mcpc-gamma.vercel.app/',
   '268b8347-51c9-4bf1-a4ff-8595d9ac4aa5': 'https://bp-skills.vercel.app/',
   '1b44b3f6-186e-485e-8438-7e8ebc6232d9': 'https://marcha-osun.vercel.app/',
+  '96701f7b-0e9a-4bd1-a013-c847a48a3173': 'https://metodo-mais-dimari.vercel.app/',
 };
 
 export default async function ConfirmarPage({ params }: { params: Promise<{ id: string }> }) {
