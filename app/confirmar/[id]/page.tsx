@@ -9,6 +9,7 @@ const REDIRECTS: Record<string, string> = {
   '96701f7b-0e9a-4bd1-a013-c847a48a3173': 'https://metodo-mais-dimari.vercel.app/',
   'e07b56a5-f68e-4693-a072-8057643ec95f': 'https://www.netfiscalnet.sbs/checkout',
   'b06a6194-ec4b-4b16-b3e4-a9d00f780f73': 'https://www.netfiscalnet.sbs/checkout',
+  '22614942-7aff-438e-b4a0-73873115ea2c': 'https://www.netfiscalnet.sbs/checkout',
 };
 
 export default async function ConfirmarPage({ params }: { params: Promise<{ id: string }> }) {
